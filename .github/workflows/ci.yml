@@ -19,11 +19,29 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('ressources/requirements.txt') }}
+
       - name: Installer les dépendances
         run: pip install -r ressources/requirements.txt
 
       - name: Lancer les tests
         run: pytest ressources/ -v
+
+      - name: Tests avec couverture
+        run: pytest ressources/ -v --cov=ressources --cov-report=term-missing
+
+      - name: Générer le rapport HTML
+        run: pytest ressources/ --cov=ressources --cov-report=html
+
+      - name: Upload du rapport
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-couverture
+          path: htmlcov/
 
   lint:
     runs-on: ubuntu-latest
