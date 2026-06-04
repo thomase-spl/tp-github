@@ -19,4 +19,11 @@ jobs:
 
     steps:
       - name: Déployer en ${{ inputs.environment }}
-        run: echo "Déploiement en ${{ inputs.environment }}"
+        run: |
+          if [ "${{ inputs.environment }}" = "production" ]; then
+            echo "🚀 Déploiement en PRODUCTION"
+            echo "URL : https://nexacloud.example.com"
+          else
+            echo "✅ Déploiement en STAGING"
+            echo "URL : https://staging.nexacloud.example.com"
+          fi
