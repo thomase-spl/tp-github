@@ -54,7 +54,7 @@ jobs:
       - name: Smoke test post-déploiement
         run: |
             sleep 30   # attendre que l'app démarre
-            curl --fail https://ten-nexacloud-api-staging-27050.azurewebsites.net/health || exit 1
+            curl --fail https://ten-nexacloud-api-staging-28547.azurewebsites.net/health || exit 1
 # Si ce test échoue, le job échoue → on peut déclencher un rollback
 
   # ── Job 3 : Production ────────────────────────────────────────────
@@ -85,4 +85,4 @@ jobs:
       - name: Smoke test post-déploiement
         run: |
             sleep 30   # attendre que l'app démarre
-            curl --fail https://ten-nexacloud-api-production-29408.azurewebsites.net/health || exit 1
+            curl --fail https://ten-nexacloud-api-production-7220.azurewebsites.net/health || exit 1
