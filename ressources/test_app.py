@@ -58,4 +58,4 @@ def test_logs_critical_alerte(client):
     assert "alerte" in data
     assert data["alerte"] is True
 
-# no change, some test
+# no change
