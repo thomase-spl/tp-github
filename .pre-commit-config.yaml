@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args: [--config, ressources/.flake8]
+        files: ressources/.*\.py$
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace      # supprime les espaces en fin de ligne
+      - id: end-of-file-fixer        # ajoute un saut de ligne en fin de fichier
+      - id: check-yaml               # valide les fichiers YAML (vos workflows !)
+      - id: check-merge-conflict     # bloque si des marqueurs de conflit Git traînent
+
+# Force les messages de commit à suivre le format Conventional Commits
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.2.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        # Format attendu : feat: ajouter la route /logs
+        #                  fix: corriger le calcul de pourcentage
+        #                  ci: mettre à jour le workflow de déploiement
