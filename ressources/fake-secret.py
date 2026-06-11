@@ -1,0 +1,1 @@
+AZURE_API_KEY = "4fa8b6c2d1e0f9a8b7c6d5e4f3a2b1c0"
